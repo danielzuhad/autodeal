@@ -13,3 +13,7 @@ body {
   align-items: center;
   background-color: #f4f5f7;
 }
+
+.swiper-wrapper {
+  display: flex;
+}

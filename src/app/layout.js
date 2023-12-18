@@ -16,7 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${quickSand.variable}`}>
         <Navbar />
+        <main className="w-screen max-w-[1280px] relative">
         {children}
+        </main>
         <Footer />
       </body>
     </html>

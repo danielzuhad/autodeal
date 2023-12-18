@@ -1,20 +1,19 @@
-import Image from 'next/image'
+"use client"
+
+import ProductCard from "@/components/ProductCard"
+import Image from "next/image"
+import DetailProfil from "./_components/DetailProfil"
+import LayananPenjual from "./_components/LayananPenjual"
+import Deskripsi from "./_components/Deskripsi"
+import Title from "./_components/Title"
+import { FotoProduk } from "./_components/FotoProduk"
+import Product from "./_components/Product"
 
 export default function DetailIklan() {
-  const categoryItems = [
-    { scr: '/icons/semua.png', alt: 'semua' },
-    { scr: '/icons/properti.png', alt: 'properti' },
-    { scr: '/icons/mobil.png', alt: 'mobil' },
-    { scr: '/icons/motor.png', alt: 'motor' },
-    { scr: '/icons/gadget.png', alt: 'gadget' },
-    { scr: '/icons/elektronik.png', alt: 'gadget' },
-    { scr: '/icons/olahraga.png', alt: 'olahraga' },
-    { scr: '/icons/pawprint.png', alt: 'pawprint' }
-  ]
   return (
-    <div className="mt-36 py-4">
+    <div className="mt-[135px] font-inter md:mt-36">
       {/* Breadcrumb */}
-      <div className="flex gap-2 font-inter">
+      <div className="mx-5 my-[10px] flex gap-2 pt-0 md:my-4 md:pt-4  lg:mx-0">
         <Image
           src="/svgs/home.svg"
           width={13}
@@ -22,15 +21,42 @@ export default function DetailIklan() {
           alt="Home"
           className="cursor-pointer"
         />
-        <p className="cursor-pointer">
-          <span className="text-[#AAAAAA]">/</span> Kategori Mobil
+        <p className="cursor-pointer text-[10px] md:text-xs">
+          <span className="text-[10px] font-[500] text-[#AAAAAA] ">/</span>{" "}
+          Kategori Mobil
         </p>
-        <p className="cursor-pointer">
+        <p className="cursor-pointer text-[10px] font-[500] md:text-xs">
           <span className="text-[#AAAAAA]">/</span> Mobil
         </p>
-        <p className="cursor-pointer text-[#AAAAAA]">
+        <p className="cursor-pointer text-[10px] font-[500] text-[#AAAAAA] md:text-xs">
           <span className="text-[#AAAAAA]">/</span> Mobil
         </p>
+      </div>
+      <FotoProduk />
+      {/* content */}
+      <div className="mx-5 mt-5 flex flex-col gap-[10px] font-quicksand md:flex-row lg:mx-0">
+        <div className="flex h-fit w-full flex-col gap-[10px] rounded-xl  md:w-[850px]">
+          {/* title */}
+          <Title />
+          <LayananPenjual />
+          <Deskripsi />
+        </div>
+        {/* aside profile */}
+        <DetailProfil />
+      </div>
+      {/* iklan */}
+      <div className="mt-8 w-full px-5 lg:px-0">
+        <p className="font-quicksand text-xl font-semibold">Iklan Terkait</p>
+        <div className="mt-5 flex flex-wrap gap-[10px]  md:gap-5">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Product key={index} />
+          ))}
+        </div>
+      </div>
+      <div className="mb-[70px] mt-10 flex items-center justify-center md:mb-0">
+        <button className="rounded-lg bg-[#ECECEC] px-6 py-[13px] font-[500] text-[#AAA] hover:bg-[#e9e9e9]">
+          Lihat lebih banyak
+        </button>
       </div>
     </div>
   )
