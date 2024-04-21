@@ -1,31 +1,30 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useSwiper } from "swiper/react";
+
+const categoryItems = [
+  { scr: "/icons/semua.png", alt: "semua" },
+  { scr: "/icons/properti.png", alt: "properti" },
+  { scr: "/icons/mobil.png", alt: "mobil" },
+  { scr: "/icons/motor.png", alt: "motor" },
+  { scr: "/icons/gadget.png", alt: "gadget" },
+  { scr: "/icons/elektronik.png", alt: "gadget" },
+  { scr: "/icons/olahraga.png", alt: "olahraga" },
+  { scr: "/icons/pawprint.png", alt: "pawprint" },
+  { scr: "/icons/pawprint.png", alt: "pawprint" },
+  { scr: "/icons/pawprint.png", alt: "pawprint" },
+  { scr: "/icons/pawprint.png", alt: "pawprint" },
+  { scr: "/icons/pawprint.png", alt: "pawprint" },
+  { scr: "/icons/pawprint.png", alt: "pawprint" },
+];
 
 const CategoriesSection = () => {
-  const categoryItems = [
-    { scr: "/icons/semua.png", alt: "semua" },
-    { scr: "/icons/properti.png", alt: "properti" },
-    { scr: "/icons/mobil.png", alt: "mobil" },
-    { scr: "/icons/motor.png", alt: "motor" },
-    { scr: "/icons/gadget.png", alt: "gadget" },
-    { scr: "/icons/elektronik.png", alt: "gadget" },
-    { scr: "/icons/olahraga.png", alt: "olahraga" },
-    { scr: "/icons/pawprint.png", alt: "pawprint" },
-    { scr: "/icons/pawprint.png", alt: "pawprint" },
-    { scr: "/icons/pawprint.png", alt: "pawprint" },
-    { scr: "/icons/pawprint.png", alt: "pawprint" },
-    { scr: "/icons/pawprint.png", alt: "pawprint" },
-    { scr: "/icons/pawprint.png", alt: "pawprint" },
-  ];
-
+  const [currentIndex, setCurrentIndex] = useState(0);
   const swiperRef = useRef();
 
   return (
@@ -35,6 +34,9 @@ const CategoriesSection = () => {
         <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
+          }}
+          onSlideChange={(swiper) => {
+            setCurrentIndex(swiper.activeIndex);
           }}
           pagination
           slidesPerView={1}
@@ -67,27 +69,35 @@ const CategoriesSection = () => {
         >
           <button
             onClick={() => swiperRef.current.slidePrev()}
-            className="active:scale-95"
+            className={`${currentIndex !== 0 && "active:scale-95"}`}
           >
             <Image
               width={40}
               height={40}
               alt="arrow-kiri"
-              src="/svgs/arrow-kiri.svg"
-              className="rounded-full object-contain"
+              src={
+                currentIndex === 0
+                  ? "/svgs/arrow-kiri.svg"
+                  : "/svgs/arrow-kanan.svg"
+              }
+              className={`rounded-full object-contain ${currentIndex !== 0 && "rotate-180"}`}
             />
           </button>
 
           <button
             onClick={() => swiperRef.current.slideNext()}
-            className="active:scale-95"
+            className={`${categoryItems.length - 8 !== currentIndex && "active:scale-95"}`}
           >
             <Image
               width={40}
               height={40}
               alt="arrow-kanan"
-              src="/svgs/arrow-kanan.svg"
-              className="object-contain"
+              src={
+                currentIndex === categoryItems.length - 8
+                  ? "/svgs/arrow-kiri.svg"
+                  : "/svgs/arrow-kanan.svg"
+              }
+              className={`rounded-full object-contain ${currentIndex === categoryItems.length - 8 ? "rotate-180" : ""}`}
             />
           </button>
         </div>

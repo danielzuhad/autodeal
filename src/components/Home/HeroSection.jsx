@@ -1,7 +1,5 @@
-import Image from "next/image";
-import React from "react";
 import CategoriesSection from "./CategoriesSection";
-import IklanSection from "./IklanSection";
+import IklanSection from "./Hero/IklanSection";
 
 const HeroSection = () => {
   const isLoggedIn = true;

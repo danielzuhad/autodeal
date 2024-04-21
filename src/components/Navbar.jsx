@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { FaUnlockKeyhole } from "react-icons/fa6";
 
@@ -103,7 +103,7 @@ const Navbar = () => {
 
               {/* Profile Clicked */}
               {profileClicked && (
-                <div className="absolute bottom-[-150px] right-[10px] h-[140px] w-[280px] rounded-lg border bg-white  p-[20px] max-lg:hidden">
+                <div className="absolute bottom-[-150px] right-[10px] h-[145px] w-[280px] rounded-lg border bg-white  px-[20px]  pt-[15px] max-lg:hidden">
                   {/* Halo Account */}
                   <div className="px-[15px]">
                     <h3 className="text-sm font-medium text-neutral-400">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 const ProductCard = () => {
@@ -80,18 +80,36 @@ const ProductCard = () => {
             Rp 3.518.990.000
           </h3>
 
-          <div className="mt-[10px] flex gap-[6px]  ">
-            <Image
-              className="object-contain"
-              width={12}
-              height={12}
-              alt=".."
-              src="/svgs/map.svg"
-            />
+          <div className="mt-[10px] flex  w-full items-center justify-between ">
+            <div className=" flex h-full items-center gap-[6px]  ">
+              {/* Map */}
+              <Image
+                className="object-contain"
+                width={12}
+                height={12}
+                alt=".."
+                src="/svgs/map.svg"
+              />
 
-            <p className="text-[10px] font-medium text-neutral-400 md:text-xs">
-              Jakarta Barat, Kalideres
-            </p>
+              <p className="h-full text-[10px] font-medium text-neutral-400 lg:text-xs">
+                Jakarta Barat, Kalideres
+              </p>
+            </div>
+
+            {/* Calendar */}
+            <div className="flex items-center gap-1 max-lg:hidden">
+              <Image
+                className="object-contain"
+                width={12}
+                height={12}
+                alt=".."
+                src="/svgs/calendar.svg"
+              />
+
+              <p className="h-full text-[10px] font-medium text-neutral-400 md:text-xs">
+                7 Aug
+              </p>
+            </div>
           </div>
         </div>
       </div>
